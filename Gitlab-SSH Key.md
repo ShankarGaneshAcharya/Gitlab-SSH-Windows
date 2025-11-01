@@ -138,11 +138,3 @@ Welcome to GitLab, @shankarganeshacharya!
 🚀 Step 10: Clone Your Repository
 Use Git Bash to clone:
 git clone git@gitlab.com:shankarganeshacharya/my-first-repo.git /c/Users/sshan/OneDrive/Desktop/my-first-repo --progress --recursive
-
-
-
-🧠 Final Tips
-- Private key: Never share it.
-- Public key: Can be reused across GitLab, GitHub, etc. if needed.
-- Multiple keys: You can create separate keys for GitHub and GitLab and configure them in ~/.ssh/config.
-Would you like help setting up a second key for GitHub or automating this with a script?
