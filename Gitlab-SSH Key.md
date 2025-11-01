@@ -103,6 +103,42 @@ Agent Pid 12345
 
 ➕ Add your key:
 
+<details>
+<summary>Explained</summary>
+This command starts the SSH agent and sets up your shell environment to use it.
+
+**🔍 What is `ssh-agent`?**
+
+- `ssh-agent` is a background program that holds your private SSH keys in memory.
+- It allows you to use SSH keys without re-entering your passphrase every time you connect to a server or push to Git.
+
+**🧪 What does `-s` do?**
+
+- The `-s` flag tells `ssh-agent` to output shell commands that set environment variables like `SSH_AUTH_SOCK` and `SSH_AGENT_PID`.
+
+**🧩 What does eval $(...) do?**
+
+- `$(...)` runs the command inside the parentheses and returns its output.
+- `eval` executes that output as a shell command.
+
+🧬 So together:
+
+```
+eval $(ssh-agent -s)
+```
+
+- Starts the SSH agent.
+- Sets up your shell to communicate with it.
+- Enables tools like `ssh-add` to register your keys with the agent.
+
+✅ Result: You’ll see something like:
+
+`Agent pid 12345`
+
+This confirms the agent is running and ready to manage your SSH keys.
+  
+</details>
+
 ```
 ssh-add ~/.ssh/id_ed25519
 ```
