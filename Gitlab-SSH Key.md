@@ -2,99 +2,131 @@
 
 You can generate a new SSH key on your local machine. After you generate the key, you can add the public key to your account on gitlab.com to enable authentication for Git operations over SSH.
 
-🛠️ Step 1: Open Git Bash
-Launch Git Bash from your Start menu. This gives you a Unix-like terminal on Windows.
+### 🛠️ Step 1: Open Git Bash
+Launch **Git Bash** from your Start menu. 
 
-🔐 Step 2: Generate an SSH Key Pair
+This gives you a Unix-like terminal on Windows.
+
+### 🔐 Step 2: Generate an SSH Key Pair
+
 Choose your key type:
-🔸 For ED25519 (recommended):
-ssh-keygen -t ed25519 -C "your_email@example.com"
 
+🔸 For ED25519 (recommended):
+
+```
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
 
 🔸 For RSA (2048-bit):
+```
 ssh-keygen -t rsa -b 2048 -C "your_email@example.com"
+```
 
+**Flags Explained:**
 
-- -t: Specifies the key type.
-- -b: Bit size (only for RSA).
-- -C: Adds a comment (usually your email).
+- `-t`: Specifies the key type.
+- `-b`: Bit size (only for RSA).
+- `-C`: Adds a comment (usually your email).
 
-This creates a new SSH key, using the provided email as a label.
+> [Note]
+> This creates a new SSH key, using the provided email as a label.
 
+### 📁 Step 3: Save the Key in Your Desired Path
 
-
-📁 Step 3: Save the Key in Your Desired Path
 When prompted:
+
 Enter file in which to save the key (/c/Users/user/.ssh/id_ed25519):
 
+**✅ Accept Default Path**
 
 Press Enter to accept the default path:
+
 C:\Users\user\.ssh\id_ed25519
 
 
-Or type a custom name:
+**✏️ Or type a custom name:**
+
 /c/Users/user/.ssh/gitlab_com_ed25519
 
+> [Note:] 
+> Git Bash uses /c/Users/... to refer to C:\Users\...
 
-Note: Git Bash uses /c/Users/... to refer to C:\Users\...
-
-
-🔒 Step 4: Add a Passphrase (Optional)
+### 🔒 Step 4: Add a Passphrase (Optional)
 You'll see:
+
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 
+- 🔐 A passphrase adds security.
+- ⚠️ Leave blank if you want passwordless access (less secure but convenient).
 
-- A passphrase adds security.
-- Leave blank if you want passwordless access (less secure but convenient).
+### ✅ Step 5: Confirm Key Generation
 
-✅ Step 5: Confirm Key Generation
 You’ll see something like:
+
 Your identification has been saved in /c/Users/user/.ssh/id_ed25519
 Your public key has been saved in /c/Users/user/.ssh/id_ed25519.pub
 
+**🔑 Key Files**
 
-- Private key: id_ed25519 (keep this secret!)
-- Public key: id_ed25519.pub (you’ll upload this to GitLab)
+- Private key: `id_ed25519` (keep this secret!)
+- Public key: `id_ed25519.pub` (you’ll upload this to GitLab)
 
-🧩 Step 6: Add Public Key to GitLab
-Copy the public key to clipboard:
+### 🧩 Step 6: Add Public Key to GitLab
+
+📋 Copy the public key to clipboard:
+
+```
 cat ~/.ssh/id_ed25519.pub | clip
-# Copies the contents of the id_ed25519.pub file to your clipboard
+```
 
+Copies the contents of the id_ed25519.pub file to your clipboard
 
-➕Add to GitLab:
-- Go to https://gitlab.com and sign in.
-- Click your avatar (top-right) → Edit profile.
-- In the left sidebar, go to SSH Keys.
-- Paste the key into the Key field.
-- Add a Title (e.g., “Work Laptop”).
-- Click Add key.
+### ➕ Step 7: Add to GitLab:
 
-🧭 Step 7: Start SSH Agent and Add Your Key
-Start the agent:
+1. Go to https://gitlab.com and sign in.
+2. Click your avatar (top-right) → **Edit profile**.
+3. In the left sidebar, go to **SSH Keys**.
+4. Paste the key into the **Key** field.
+5. Add a **Title** (e.g., “Work Laptop”).
+6. Click **Add key**.
+
+### 🧭 Step 7: Start SSH Agent and Add Your Key
+
+▶️ Start the agent:
+
+```
 eval $(ssh-agent -s)
+```
 
 Agent Pid 12345
 
-Add your key:
+➕ Add your key:
+
+```
 ssh-add ~/.ssh/id_ed25519
+```
 
 Identity added: /c/Users/sshan/.ssh/id_ed25519 (shankarganeshacharya@gmail.com)
 
+> [Note:]
+> 📝 If you used a custom name:
 
-
-If you used a custom name:
+```
 ssh-add ~/.ssh/gitlab_com_ed25519
+```
 
+### 🗂️ Step 8: Configure SSH for GitLab
 
+📝 Edit your SSH config file:
 
-🗂️ Step 8: Configure SSH for GitLab
-Edit your SSH config file:
+```
 nano ~/.ssh/config
+```
 
+🔧 Add Configuration
 
-Add:
+```
 # GitLab.com
 Host gitlab.com
   PreferredAuthentications publickey
@@ -104,20 +136,28 @@ Host gitlab.com
 Host gitlab.company.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/id_ed25519
-
+```
 
 If you used a custom filename:
+
+```
 IdentityFile ~/.ssh/gitlab_com_ed25519
+```
 
+💾 Save and exit
 
-Save and exit (Ctrl+O, Enter, then Ctrl+X).
+(Ctrl+O, Enter, then Ctrl+X).
 
-🧪 Step 9: Test SSH Connection
+### 🧪 Step 9: Test SSH Connection
+
 Run:
+
+```
 ssh -T git@gitlab.com
+```
 
+🛡️ First time, you'll see:
 
-First time, you'll see:
 The authenticity of host 'gitlab.com' can't be established...
 Are you sure you want to continue connecting (yes/no)?
 
@@ -129,9 +169,9 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? Yes
 Type:
 yes
 
+🎉 Success Message
 
-Then, if everything is set up:
-Welcome to GitLab, @shankarganeshacharya!
+Welcome to GitLab, @Your Username!
 
 
 
