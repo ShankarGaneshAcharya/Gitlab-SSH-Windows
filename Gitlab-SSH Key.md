@@ -28,7 +28,7 @@ ssh-keygen -t rsa -b 2048 -C "your_email@example.com"
 - `-b`: Bit size (only for RSA).
 - `-C`: Adds a comment (usually your email).
 
-> [Note]
+> [!Note]
 > This creates a new SSH key, using the provided email as a label.
 
 ### 📁 Step 3: Save the Key in Your Desired Path
