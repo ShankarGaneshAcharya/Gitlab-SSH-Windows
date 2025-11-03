@@ -11,6 +11,7 @@
 4. Click **Install**.
 
 > [!Note:] 
+> 
 > This extension integrates GitLab features like issues, merge requests, and pipelines directly into VS Code.
 
 
@@ -35,4 +36,5 @@
 5. Copy the token immediately — GitLab will not show it again.
 
 > [!Note:]
+> 
 > Store this token securely (e.g., in a password manager).
