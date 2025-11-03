@@ -143,7 +143,7 @@ This confirms the agent is running and ready to manage your SSH keys.
 ssh-add ~/.ssh/id_ed25519
 ```
 
-Identity added: /c/Users/sshan/.ssh/id_ed25519 (shankarganeshacharya@gmail.com)
+Identity added: /c/Users/sshan/.ssh/id_ed25519 (abc@gmail.com)
 
 > [Note:]
 > 📝 If you used a custom name:
@@ -198,7 +198,7 @@ The authenticity of host 'gitlab.com' can't be established...
 Are you sure you want to continue connecting (yes/no)?
 
 The authenticity of host 'gitlab.com (3765:5849:80:0:g24e:ffsc:9bde:b8b8)' can't be established.
-ED25519 key fingerprint is: SHA256:eUXGGm1YGsMAS7vkcx6JOJdOGHPem5gQp4taiCfCLB8
+ED25519 key fingerprint is: SHA256:eUXXXm1YGsMAS7vkcx6JJJdOOOOem5gQp4taiCfCEC8
 This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? Yes
 
