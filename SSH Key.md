@@ -114,15 +114,15 @@ GitLab will now recognize your machine for SSH-based Git operations
 
 The SSH agent keeps your key loaded in memory so Git can use it without asking for a passphrase
 
-Start the agent:
+Start the SSH agent by copying and pasting `eval $(ssh-agent -s)` into Git Bash, then press Enter
 
 ```
 eval $(ssh-agent -s)
 ```
 
-`Agent Pid 12345`
-
 Upon running the command, you’ll receive an output such as Agent pid 12345. This confirms that the SSH agent is now active and prepared to manage your keys
+
+`Agent Pid 12345`
 
 Add your key:
 
@@ -187,8 +187,7 @@ ssh -T git@gitlab.com
 
 First time, you'll see:
 
-The authenticity of host 'gitlab.com' can't be established...
-Are you sure you want to continue connecting (yes/no)?
+The authenticity of host 'gitlab.com' can't be established... <br> Are you sure you want to continue connecting (yes/no)?
 
 Type:
 yes
