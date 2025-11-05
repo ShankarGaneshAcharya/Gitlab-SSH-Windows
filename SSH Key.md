@@ -18,7 +18,6 @@ Choose your key type:
 
 🔸ED25519 (recommended): Faster, more secure, and modern
 
-
 ```
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
@@ -45,13 +44,13 @@ When prompted:
 
 Enter file in which to save the key (/c/Users/user/.ssh/id_ed25519):
 
-**✅ Accept Default Path**
+**Accept Default Path**
 
 Press Enter to accept the default path:
 
 C:\Users\user\.ssh\id_ed25519
 
-**✏️ Or type a custom name:**
+**Or type a custom name:**
 
 Type something like /c/Users/user/.ssh/gitlab_com_ed25519
 
@@ -68,8 +67,8 @@ You'll see:
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 
-- 🔐 A passphrase adds security.
-- ⚠️ - Leave blank for convenience (less secure)
+- A passphrase adds security.
+- Leave blank for convenience (less secure)
 
 If you skip the passphrase, Git operations will run without prompting — ideal for frequent use
 
@@ -143,7 +142,7 @@ This step is essential if you added a passphrase or want Git to use your key aut
 
 ### 🗂️ Step 8: Configure SSH for GitLab
 
-📝 Edit your SSH config file:
+Edit your SSH config file:
 
 The SSH config file lets you define which key to use for each host — useful if you manage multiple GitLab accounts or keys
 
@@ -171,10 +170,10 @@ If you used a custom filename:
 IdentityFile ~/.ssh/gitlab_com_ed25519
 ```
 
-💾 Save and exit
+Save and exit
 
 - Press Ctrl+O, Enter to save
-- - Press Ctrl+X to exit
+- Press Ctrl+X to exit
 
 This ensures Git uses the correct key when connecting to GitLab
 
