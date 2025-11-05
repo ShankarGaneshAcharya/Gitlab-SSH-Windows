@@ -1,20 +1,20 @@
 <h1 style="text-align:center;">SSH Key Setup for GitLab on Windows: A Developer’s Guide</h1>
 
-You can generate a new SSH key on your local machine. After you generate the key, you can add the public key to your account on gitlab.com to enable authentication for Git operations over SSH.
+You can generate a new SSH key on your local machine. After you generate the key, you can add the **public key** to your account on **gitlab.com** to enable authentication for Git operations over SSH.
 
 ### 🛠️ Step 1: Open Git Bash
 
-Git Bash provides a Unix-style terminal on Windows, making it easier to run Git and SSH commands that are native to Linux/macOS environments.
+**Git Bash** provides a Unix-style terminal on Windows, making it easier to run Git and SSH commands that are native to Linux/macOS environments.
 
-Launch **Git Bash** from your Start menu. 
+Launch **Git Bash** from your **Start menu**. 
 
 This gives you a Unix-like terminal on Windows.
 
 ### 🔐 Step 2: Generate an SSH Key Pair
 
-SSH keys are a secure way to authenticate with GitLab without typing your password every time. You’ll create a public/private key pair.
+SSH keys are a secure way to authenticate with GitLab without typing your password every time. You’ll create a **public/private key pair**.
 
-Choose your key type:
+**Choose your key type:**
 
 🔸ED25519 (recommended): Faster, more secure, and modern
 
@@ -22,7 +22,7 @@ Choose your key type:
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
-🔸RSA (fallback for older systems):
+🔸**RSA (fallback for older systems):**
 ```
 ssh-keygen -t rsa -b 2048 -C "your_email@example.com"
 ```
@@ -42,11 +42,11 @@ You can store your SSH key in the default location or choose a custom name to or
 
 When prompted:
 
-Enter file in which to save the key (/c/Users/user/.ssh/id_ed25519):
+**Enter file in which to save the key** (/c/Users/user/.ssh/id_ed25519):
 
 **Accept Default Path**
 
-Press Enter to accept the default path:
+Press **Enter** to accept the default path:
 
 C:\Users\user\.ssh\id_ed25519
 
@@ -79,7 +79,7 @@ After completing the prompts, you’ll see:
 Your identification has been saved in /c/Users/user/.ssh/id_ed25519
 Your public key has been saved in /c/Users/user/.ssh/id_ed25519.pub
 
-Key files created
+**Key files created**
 
 - Private key: `id_ed25519` (keep this secret!)
 - Public key: `id_ed25519.pub` (you’ll upload this to GitLab)
@@ -91,13 +91,13 @@ Never share your private key. Only the .pub file is meant to be uploaded
 
 GitLab needs your public key to recognize and trust your machine.
 
-Copy the public key to clipboard:
+**Copy the public key to clipboard:**
 
 ```
 cat ~/.ssh/id_ed25519.pub | clip
 ```
 
-This command reads your public key from id_ed25519.pub and copies it to your clipboard
+This command reads your public key from `id_ed25519.pub` and copies it to your clipboard
 
 ### ➕ Step 7: Add to GitLab:
 
@@ -114,7 +114,7 @@ GitLab will now recognize your machine for SSH-based Git operations
 
 The SSH agent keeps your key loaded in memory so Git can use it without asking for a passphrase
 
-Start the SSH agent by copying and pasting `eval $(ssh-agent -s)` into Git Bash, then press Enter
+**Start the SSH agent** by copying and pasting `eval $(ssh-agent -s)` into Git Bash, then press Enter
 
 ```
 eval $(ssh-agent -s)
@@ -129,6 +129,7 @@ Add your key:
 ```
 ssh-add ~/.ssh/id_ed25519
 ```
+You’ll see something like:
 
 Identity added: /c/Users/sshan/.ssh/id_ed25519 (abc@gmail.com)
 
@@ -142,15 +143,21 @@ This step is essential if you added a passphrase or want Git to use your key aut
 
 ### 🗂️ Step 8: Configure SSH for GitLab
 
-Edit your SSH config file:
+**Edit your SSH config file:**
 
 The SSH config file lets you define which key to use for each host — useful if you manage multiple GitLab accounts or keys
+
+The command nano `~/.ssh/config` opens the SSH configuration file in the Nano text editor, allowing you to view, create, or modify SSH connection settings for your system.
+
+When you run this command, you’re telling Nano to: </br>
+“Open the SSH config file so I can edit how my system connects to remote servers using SSH.”
+
 
 ```
 nano ~/.ssh/config
 ```
 
-🔧 Add Configuration
+**Add Configuration**
 
 ```
 # GitLab.com
@@ -164,16 +171,16 @@ Host gitlab.company.com
   IdentityFile ~/.ssh/id_ed25519
 ```
 
-If you used a custom filename:
+**If you used a custom filename:**
 
 ```
 IdentityFile ~/.ssh/gitlab_com_ed25519
 ```
 
-Save and exit
+**Save and exit**
 
-- Press Ctrl+O, Enter to save
-- Press Ctrl+X to exit
+- Press **Ctrl+O**, **Enter** to save
+- Press **Ctrl+X** to exit
 
 This ensures Git uses the correct key when connecting to GitLab
 
@@ -198,7 +205,7 @@ Welcome to GitLab, @Your_Username!
 
 This confirms your SSH setup is working and GitLab recognizes your key.
 
-🚀 Step 10: Clone Your Repository
+### 🚀 Step 10: Clone Your Repository
 
 Use Git Bash to clone via SSH:
 
